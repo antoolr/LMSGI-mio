@@ -1,0 +1,45 @@
+/* estructura de un selector css:
+    nombre_del_selector {
+    propiedad 1: valor;
+    propiedad 2: valor;
+    propiedad 3: valor;
+    ...
+    propiedadN: valor;
+}
+*/
+/* selector de tipo (etiqueta html) */
+h1 {
+    /* formatos a la fuente/letra */
+    color:rgb(139, 53, 53); /* Propiedad color del texto */
+    font-size: 40px; /* Propiedad tamaño del texto */
+    text-align:center; /* Propiedad alineación del texto */
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* Propiedad tipo de letra */
+    font-weight: 50; /* Propiedad grosor del texto */
+    text-decoration: underline; /* Propiedad subrayado del texto */
+    text-transform:capitalize; /* Propiedad mayusculas/minusculas etc del texto */
+    letter-spacing: 2px; /* Propiedad separación entre letras del texto */
+
+}
+
+p {
+    text-align: justify; /* Propiedad alineación del texto */
+    line-height: 1.5; /* Propiedad interlineado del texto */
+    text-indent: 20px; /* Sangría en primera línea */
+    margin: 20px;
+    /*margin-top: 100px;       
+    margin-left: 100px;
+    margin-right: 50px; 
+    margin-bottom: 20px;
+    margin: 100px 50px; /* margen arriba y abajo y derecha e izquierda */
+    /*border: 2px solid red; /*borde: grosor tipo color */
+    /*border-left: 2px solid blue; /* borde izquierdo */
+    /*border-top: 4px solid black; /* borde superior */
+    /*border-right: 4px solid green; /*borde derecho*/
+    border: 5px solid rgb(223, 70, 23); /* borde en todos los sentidos */
+    padding: 20px; /* margen interior */
+    border-radius: 20px;
+    border-top-left-radius: 50px;
+    border-right: 100px;
+    background-color: rgb(159, 45, 45);
+
+}
