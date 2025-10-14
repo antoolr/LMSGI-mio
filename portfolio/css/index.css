@@ -120,4 +120,36 @@ footer {
     background-color: grey(158, 61, 61);
     height: 10vh;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer div {
+    flex-basis: 50%;
+    border: 2px solid black;
+    flex-direction: row;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+    
+   
+}
+
+footer nav {
+    border: 2px solid black;
+    flex-basis: 50%;
+    text-align: left;
+}
+
+footer nav figure {
+    height: 100%;
+}
+
+footer nav figure img {
+    
+  height: 100%;
 }
