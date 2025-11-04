@@ -1,83 +1,174 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    height: 100vh;     /* Medida fija/absoluta --> px*/
+    /* medida fija/absoluta --> px */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
 }
 
 header {
-    /*flex-basis: 5%; /* altura/anchura relativa % */
-    height: 10vh; /* altura fija adapta a viewport*/
-    background-color: rgb(0, 0, 0);
+    /* altura/anchura relativa % */
+    /* flex-basis: 5%; */ /* relativo */
+    height: 5vh; /* altura fija/absoluta adapta viewport */
+    background-color: black;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    color: rgb(255, 255, 255);
+    color: white;
 }
-
-header menu {
+header #menu {
     flex-basis: 5%;
 }
 
 header #buscar {
     flex-basis: 30%;
-    background-color: rgb(255, 0, 0);
+    background-color: blue;
 }
-
-header #enlaces {
-    flex-basis: 10%;
-    background-color: orange;
-}
-
 header figure {
-    flex-basis: 10%;
+    flex-basis: 10%; /* WIDTH */
     height: 100%;
-
 }
-header figure img {
-    
-    height: 100%;
-    
+header figure img{
+    height: 100%; /* 70% de la height del padre */
 }
-
-header form {
-    flex-basis: 20%;
+header form{
+    flex-basis: 20%; /* WIDTH */
     height: 100%;
-    display: flex;
     background-color: red;
-    flex-direction: column; /* Eje principal columma*/
-    justify-content: center; /* alineacion eje principal*/
-    align-items: center;
-
+    display: flex;
+    flex-direction: column; /* eje principal columna */
+    justify-content: center; /* alineacion en eje principal */
+    align-items: center; /* alineacion en eje secunfdario */
 }
-header form input {
-    flex-basis: 80%; 
+
+header form input{
+    flex-basis: 50%; /* height */
     width: 80%;
     border-radius: 20px;
     font-size: 20px;
-    color: rgb(0, 38, 255);
+    color: blue;
     background-color: bisque;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    
+}
+header #enlaces {
+    background-color: yellow;
+    flex-basis: 30%;
 }
 main {
     flex-basis: 65%;
-    background-color: rgb(204, 71, 71);
-    text-align: center;
+    background-color: azure;
 }
-
 footer {
     flex-basis: 30%;
-    background-color: rgb(255, 253, 253);
-    text-align: center;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    /* todos los hijos (items) en una sola linea */
+    /*flex-wrap: nowrap;*/
+    /* todos los hijos (items) en varias lineas en funccion flexbasic */
+    flex-wrap: wrap;
+}
+footer nav#sociales {
+    background-color: rgb(0, 0, 0);
+    flex-basis: 50%; /* height (columno) / width (row) */
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding-left: 30px;
+}
+footer nav#sociales a{
+    /* estado de reposo del enlace (fotograma)*/
+    text-decoration: none;
+    border: 0px solid black; 
+    background-color: lightgreen;
+    /* elemento en linea pero con propiedades de bloque */
+    display: inline-block;
+    
+    width: 40px;
+    height: 40px;
+    border-radius:50px;
+    margin-right: 7px;;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /*realizar un cambio animado*/
+    transition: all 0.3s ease-in-out;
+
+}
+footer nav#sociales a:hover{
+    /* estado sobre (fotograma)*/
+    /* efecto de subir o bajar cuando pasamos por encima el raton*/
+    transform: translate(0px, -10px);
+    transform: rotate(60deg);
+    transform: scale(1.2);
+
 }
 
+footer nav#sociales a i {
+    font-size: 20px;
+    color: white;
+}
+    
+footer div#subscribete{
+    background-color: burlywood;
+    flex-basis: 50%;
+    
+}
+
+footer article{
+    background-color: cadetblue;
+    flex-basis: 33%;
+}
+
+footer article h3 {
+    color: whitesmoke;
+    text-transform: uppercase;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+footer article nav {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding-left: 30px;
+}
+
+footer article nav a {
+    border: none;
+    text-decoration: none;
+}
+
+footer article nav a i {
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+footer article nav a span {
+    color: whitesmoke;
+}
+
+footer article nav a:hover span {
+   color: lightgreen;
+}
+
+footer article nav a:hover i {
+   color: rgb(255, 0, 0);
+}
+
+footer article a {
+    
+}
