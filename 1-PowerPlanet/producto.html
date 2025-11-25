@@ -31,7 +31,7 @@
     </header>
 
     <main class="producto">
-  <!-- Parte 1: miniaturas -->
+  <!-- miniaturas -->
   <aside class="miniaturas">
     <img src="img/productos/miniatura1.jpeg" alt="Miniatura 1" class="miniatura activa">
     <img src="img/productos/miniatura2.jpeg" alt="Miniatura 2" class="miniatura">
@@ -39,12 +39,12 @@
     <img src="img/foto2.jpg" alt="Miniatura 4" class="miniatura">
   </aside>
 
-  <!-- Parte 2: imagen principal -->
+  <!-- imagen principal -->
   <section class="imagen-principal">
     <img id="imagenPrincipal" src="img/foto2.jpg" alt="Imagen principal">
   </section>
 
-  <!-- Parte 3: información -->
+  <!-- información -->
   <aside class="info">
     <h2 id="nombre"></h2>
     
@@ -91,7 +91,7 @@
 </main>
 
 <script>
-  // Miniaturas → cambiar imagen principal
+  // Miniaturas a cambiar imagen principal
   const miniaturas = document.querySelectorAll('.miniatura');
   const imagenPrincipal = document.getElementById('imagenPrincipal');
 
@@ -103,7 +103,7 @@
     });
   });
 
-  // Cargar el único producto desde xiaomi.json
+  // Cargar producto desde xiaomi.json
   fetch('./data/xiaomi.json')
     .then(res => res.json())
     .then(producto => {
