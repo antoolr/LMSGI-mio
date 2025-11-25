@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerPlanet</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
@@ -29,7 +29,38 @@
         </div>
     </header>
     <main>
-        Main de pagina
+        <section id="catalogo">
+            <article>
+                <p class="envio">Envio Gratis</p>
+                <figure>
+                    <img width= "100px" src="ipad.jpeg" />
+                </figure>
+                <p class="nombre">Apple Ipad Pro</p>
+                <p class="caracteristicas">
+                    128GB WiFi iPadOS 18 Plata</p>
+                <div class="valoraciones">
+                    <span class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span class="nvaloraciones">150</span>
+                    <span class="comentarios">(45 opiniones)</span>
+                </div>
+                <div precios>
+                    <span class="dto"> 15% </span>
+                    <span class="pvr"> 400€</span>
+                    <span class="pvp"> 369.90€</span>
+                </div>
+                <div class="recibe">
+                        
+                </div>
+            </article>
+            
+            
+        </section>
     </main>
     <footer>
         <nav id="sociales">
@@ -52,8 +83,8 @@
         </div>
         <article>
             <h3>Condicones de Compra</h3>
-            <a href="#">
-                <nav>
+            <nav>
+                <a href="#">
                     <i class="fa-solid fa-car"></i>
                     <span>¿Qué envíos hay disponibles en Powerplanetonline?</span>
                 </a>
@@ -88,9 +119,9 @@
                 <a href="#">
                     <i class="fa-solid fa-building-columns"></i>
                     <span>Centros educativos y administraciones públicas</span>
-                </a>  
-            </nav> 
-                    
+                </a>    
+
+            </nav>
         </article>
         <article>
             <h3>Distribuidores</h3>
@@ -107,3 +138,97 @@
      </footer>
 </body>
 </html>
+
+<!-- Codigo Javascript para listar los productos -->
+<!-- Navegador web: Brave, Firefox, Chrome, Safaris: 
+        codigo que ejecutan: (pagina web)
+        - HTML5 -> almacenar o definir la datos (estructura) 
+        - CSS.  -> estilos o la presentacion visual del html (datos)
+        - JS.   -> Manipular (añadir/eliminar nodos html) la estuctura del html   
+-->
+<script>
+    /* 
+        DOM -> Modelo de Objetos del Documento (estructura interna)
+        * contiene todo el HTML de la pagina, para poder manipular ese HTML
+        * el objeto JS document contiente todo el DOM del html para modificarlo/consultarlo
+    */
+    /* = -> operador asignacion */ 
+    /* - getElementById: almacenar en contSection -> <section id='catalogo'> */
+    const contSeccion = document.getElementById('catalogo');
+    /* - innerHTML -> Escribir el Contenido de contSeccion 
+                      elimina lo que hubiese antes */
+   /*
+    contSeccion.innerHTML = 
+    `
+        <h1>Catologo de Articulos </h1>
+    `;
+*/
+    /* - createElement -> un nodo html vacio
+            tarjeta -> <article> </article> */
+    /*
+    const tarjeta = document.createElement('article');
+    const tarjeta2 = document.createElement('article');
+    const tarjeta3 = document.createElement('article');
+    
+    tarjeta.innerHTML=`articulo1`;
+    tarjeta2.innerHTML=`articulo2`;
+    tarjeta3.innerHTML=`articulo3`;
+    
+    contSeccion.appendChild(tarjeta);
+    contSeccion.appendChild(tarjeta2);
+    contSeccion.appendChild(tarjeta3);
+*/
+/* funcion para leer un archivo json o consultar una api */
+    fetch('./data/productos.json')
+        .then(response => response.json())
+        // productos -> todo el array de objetos
+        .then ( productos => {
+            // recorro el array. Se ejecuta 10 veces
+            productos.forEach( producto => {
+                // en producto tendre cada producto del array
+                const tarjeta = document.createElement('article');
+                //Generar estrellas segun su valoracion
+
+                //Codigo JS para generar dinamicax el numero de estrellas
+                // en funcion del campo valoracion del producto
+                const maxEstrellas = 5; //crear una constante del maximo de estrellas que puede tener
+                let estrellasHTML = ''; //variable que contiene el codigo html de las estrellas
+
+                for(let i=1;i<=producto.valoracion;i++){
+                    estrellasHTML = estrellasHTML + '<i class="fa-solid fa-star"></i>';
+                }
+
+                tarjeta.innerHTML=
+                `
+                    <p class="envio">Envio Gratis</p>
+                     <figure>
+                        <img width= "100px" src="${producto.imagen}" />
+                    </figure>
+                    <p class="nombre">${producto.nombre}</p>
+                    <div class="caracteristicas">
+                    <span class="cpu"> CPU: ${producto.caracteristicas.cpu}</span>
+                    <span class="ram"> RAM: ${producto.caracteristicas.ram}</span>
+                    <span class="almecenamiento"> HDD: ${producto.caracteristicas.disco}</span>
+
+                    <div class="valoraciones">
+                    <span class="star">
+                        ${estrellasHTML}
+                    </span>
+                    </div>
+
+                    <span clas="valoraciones">(${producto.valoracion} valoracion)</span>
+                    <span clas="opiniones">(${producto.opiniones} opiniones)</span>
+                    </div>
+
+                    <div precios>
+                        <span class="dto"> ${producto.descuento}% </span>
+                        <span class="pvr"> ${producto.precioOriginal}€ </span>
+                        <span class="pvp"> ${producto.precio}€</span>
+                    </div>
+                   
+                    
+                `;
+                contSeccion.appendChild(tarjeta)
+            })
+        })
+</script>

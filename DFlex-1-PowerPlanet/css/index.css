@@ -84,7 +84,7 @@ main section article {
     /* top left bottom right */
     /* distantia exterior */
     margin: 5px 0px 5px 0px ;
-    height: 30vh; /* altura fija */
+
     border-radius: 8px;
     /* distancia interior (relleno) al contenido */
     padding: 5px 10px 5px 10px;
@@ -100,9 +100,10 @@ main section article:hover{
 }
 
 main section article .envio{
-    position: absolute;
-    top: 50px;
-    left: 10px;;
+    top:50px;
+    left:10px;
+    position:absolute;
+    right:0px;
     background-color: rgb(202,78,148);
     border-radius: 5px;
     padding: 3px;
@@ -112,43 +113,79 @@ main section article .envio{
 
 }
 main section article figure{
-    border: 0px solid red;
-    flex-basis: 50%; /* height --> fdirection = column */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+flex-bassis:50%;
+display:flex;
+flex-direction: column;
+justify-content: center;
+
+}
+
+main section article .valoraciones {
+    border: 1px solid red;
+    width: 100%;
+    width: 80%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
+
+main section article .valoraciones .star {
+    margin-right:10px;
+}
+
+.star i {
+    color:yellow;
+    font-size:12px;
+}
+
+main section article .valoraciones .nvaloraciones {
+    font-size:10px;
+    font-weight: bold;
+    margin-right:10px;
+}
+
+main section article .valoraciones .comentarios {
+    font-size:10px;
+    font-weight: bold;
+}
+
 main section article figure img{
-    flex-basis: 100%;
     
 }
 main section article p{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
-main section article .valoraciones{
-    border: 1px solid red;
-    width: 80%;
+main section article p{
+
+}
+
+main section article .nombre{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow'
+}
+
+main section article .caracteristicas {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
-main section article .valoraciones .star{
-    
+
+main section article .caracteristicas .cpu {
+    flex-basis: 100%;
+    text-align: center;
 }
-main section article .valoraciones .star i{
-    color: yellow;
-    font-size: 10px;
+
+main section article .caracteristicas .ram {
+    flex-basis: 50%;
+    text-align: start;
 }
-main section article .valoraciones .nvaloraciones{
-    font-size: 10px;
-    font-weight: bold;
+
+main section article .caracteristicas .disco {
+    flex-basis: 50%;
+    text-align: end;
 }
-main section article .valoraciones .comentarios{
-    font-size: 10px;
-    font-weight: bold;
-}
+
 
 footer {
     flex-basis: 30%;
@@ -252,3 +289,50 @@ footer article nav a:hover i{
     color: lightgreen
 }: red */
 }
+
+article {
+  display: flex;
+  
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  width: 300px;
+}
+
+
+.star i {
+  color: yellow;
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+
+
+.dto {
+  background-color: rgb(240, 5, 197);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.pvr {
+  text-decoration: line-through;
+  color: gray;
+  margin-left: 10px;
+  display: flex;
+  justify-content: end;
+  text-align: center;
+  gap: 10px;
+}
+
+.pvp {
+  color: green;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+  margin-left: auto;
+}
+
