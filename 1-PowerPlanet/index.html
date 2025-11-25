@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerPlanet</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             <i class="fa-solid fa-bars"></i>
         </div>
         <figure>
-            <img src="logo.png" alt="Logo PowerPlanet">
+            <img src="img/logo.png" alt="Logo PowerPlanet">
         </figure>
         <form> <!-- Formulario web -->
             <input type="search" placeholder="Buscar Articulo ...">
@@ -33,11 +33,10 @@
             <article>
                 <p class="envio">Envio Gratis</p>
                 <figure>
-                    <img width= "100px" src="ipad.jpeg" />
+                    <img width= "100px" src="img/productos/ipad.jpg" />
                 </figure>
                 <p class="nombre">Apple Ipad Pro</p>
-                <p class="caracteristicas">
-                    128GB WiFi iPadOS 18 Plata</p>
+                <p class="caracteristicas">128GB WiFi iPadOS 18 Plata</p>
                 <div class="valoraciones">
                     <span class="star">
                         <i class="fa-solid fa-star"></i>
@@ -54,9 +53,8 @@
                     <span class="pvr"> 400€</span>
                     <span class="pvp"> 369.90€</span>
                 </div>
-                <div class="recibe">
-                        
-                </div>
+                    
+
             </article>
             
             
@@ -149,86 +147,44 @@
 <script>
     /* 
         DOM -> Modelo de Objetos del Documento (estructura interna)
-        * contiene todo el HTML de la pagina, para poder manipular ese HTML
-        * el objeto JS document contiente todo el DOM del html para modificarlo/consultarlo
+        * contiene todo el HTML de la página, para poder manipular ese HTML
+        * el objeto JS document contiene todo el DOM del HTML para modificarlo/consultarlo
     */
-    /* = -> operador asignacion */ 
-    /* - getElementById: almacenar en contSection -> <section id='catalogo'> */
+
+    /* = -> operador asignación */ 
+    /* - getElementById: almacenar en contSeccion -> <section id='catalogo'> */
     const contSeccion = document.getElementById('catalogo');
-    /* - innerHTML -> Escribir el Contenido de contSeccion 
-                      elimina lo que hubiese antes */
-   /*
-    contSeccion.innerHTML = 
-    `
-        <h1>Catologo de Articulos </h1>
-    `;
-*/
-    /* - createElement -> un nodo html vacio
-            tarjeta -> <article> </article> */
-    /*
-    const tarjeta = document.createElement('article');
-    const tarjeta2 = document.createElement('article');
-    const tarjeta3 = document.createElement('article');
-    
-    tarjeta.innerHTML=`articulo1`;
-    tarjeta2.innerHTML=`articulo2`;
-    tarjeta3.innerHTML=`articulo3`;
-    
-    contSeccion.appendChild(tarjeta);
-    contSeccion.appendChild(tarjeta2);
-    contSeccion.appendChild(tarjeta3);
-*/
-/* funcion para leer un archivo json o consultar una api */
+
+    /* función para leer un archivo JSON o consultar una API */
     fetch('./data/productos.json')
-        .then(response => response.json())
-        // productos -> todo el array de objetos
-        .then ( productos => {
-            // recorro el array. Se ejecuta 10 veces
-            productos.forEach( producto => {
-                // en producto tendre cada producto del array
+        .then(response => response.json()) // convierte la respuesta en objeto JS
+        .then(productos => {
+            // recorro el array de productos
+            productos.forEach(producto => {
+                // creo un nodo <article> para cada producto
                 const tarjeta = document.createElement('article');
-                //Generar estrellas segun su valoracion
 
-                //Codigo JS para generar dinamicax el numero de estrellas
-                // en funcion del campo valoracion del producto
-                const maxEstrellas = 5; //crear una constante del maximo de estrellas que puede tener
-                let estrellasHTML = ''; //variable que contiene el codigo html de las estrellas
-
-                for(let i=1;i<=producto.valoracion;i++){
-                    estrellasHTML = estrellasHTML + '<i class="fa-solid fa-star"></i>';
-                }
-
-                tarjeta.innerHTML=
-                `
-                    <p class="envio">Envio Gratis</p>
-                     <figure>
-                        <img width= "100px" src="${producto.imagen}" />
+                // añado contenido HTML dentro de la tarjeta
+                tarjeta.innerHTML = `
+                    <p class="envio">Envío Gratis</p>
+                    <figure>
+                        <img width="100px" src="${producto.imagen}" alt="${producto.nombre}" />
                     </figure>
                     <p class="nombre">${producto.nombre}</p>
-                    <div class="caracteristicas">
-                    <span class="cpu"> CPU: ${producto.caracteristicas.cpu}</span>
-                    <span class="ram"> RAM: ${producto.caracteristicas.ram}</span>
-                    <span class="almecenamiento"> HDD: ${producto.caracteristicas.disco}</span>
-
-                    <div class="valoraciones">
-                    <span class="star">
-                        ${estrellasHTML}
-                    </span>
-                    </div>
-
-                    <span clas="valoraciones">(${producto.valoracion} valoracion)</span>
-                    <span clas="opiniones">(${producto.opiniones} opiniones)</span>
-                    </div>
-
-                    <div precios>
-                        <span class="dto"> ${producto.descuento}% </span>
-                        <span class="pvr"> ${producto.precioOriginal}€ </span>
-                        <span class="pvp"> ${producto.precio}€</span>
-                    </div>
-                   
-                    
+                    <p class="precio">${producto.precio}€</p>
                 `;
-                contSeccion.appendChild(tarjeta)
-            })
-        })
+
+                // ✅ NUEVO: guardo el id del producto en el atributo data-id
+                tarjeta.dataset.id = producto.id;
+
+                // ✅ NUEVO: añado evento para que al hacer clic en la tarjeta, redirija a producto.html
+                tarjeta.addEventListener('click', () => {
+                    // redirige a la página de detalle con el id como parámetro
+                    window.location.href = `producto.html?id=${producto.id}`;
+                });
+
+                // añado la tarjeta al contenedor principal
+                contSeccion.appendChild(tarjeta);
+            });
+        });
 </script>

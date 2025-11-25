@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiaomi redmi 13 note pro</title>
+    <link rel="stylesheet" href="css/producto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <figure>
+            <img src="img/logo.png" alt="Logo PowerPlanet">
+        </figure>
+        <form> <!-- Formulario web -->
+            <input type="search" placeholder="Buscar Articulo ...">
+        </form>
+        <nav>
+            <a href="#">Ofertas Limitadas</a>
+            <a href="#">Contactanos</a>
+            <a href="#">ES</a>
+        </nav>
+        <div id="carrito"> 
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-user"></i>
+        </div>
+    </header>
+
+    <main class="producto">
+  <!-- Parte 1: miniaturas -->
+  <aside class="miniaturas">
+    <img src="img/productos/miniatura1.jpeg" alt="Miniatura 1" class="miniatura activa">
+    <img src="img/productos/miniatura2.jpeg" alt="Miniatura 2" class="miniatura">
+    <img src="img/productos/miniatura3.jpeg" alt="Miniatura 3" class="miniatura">
+    <img src="img/foto2.jpg" alt="Miniatura 4" class="miniatura">
+  </aside>
+
+  <!-- Parte 2: imagen principal -->
+  <section class="imagen-principal">
+    <img id="imagenPrincipal" src="img/foto2.jpg" alt="Imagen principal">
+  </section>
+
+  <!-- Parte 3: información -->
+  <aside class="info">
+    <h2 id="nombre"></h2>
+    
+    <div class="valoracion-container">
+      <span id="estrellas" class="estrellas"></span>
+      <span id="puntuacion" class="puntuacion"></span>
+      <span id="opiniones" class="opiniones"></span>
+      <span class="marca">¡Opina!</span>
+    </div>
+
+    <div class="precio-container">
+      <div>
+        <span id="descuento" class="descuento-badge"></span>
+        <span id="precio" class="precio"></span>
+      </div>
+      <p class="precio-recomendado">Precio recomendado: <span id="precioOriginal"></span></p>
+      <p class="iva-note">Los precios incluyen IVA</p>
+    </div>
+
+    <div class="referencia">
+      <span class="marca-ref">XIAOMI</span> • REF: MZBOFDFEU
+    </div>
+
+    <div class="disponibilidad-box">
+      <div class="disponibilidad-header">
+        <i class="fa-solid fa-truck"></i>
+        <span class="disponibilidad-titulo">Disponibilidad:</span>
+      </div>
+      <p class="disponibilidad-estado">Temporalmente agotado | ¿Quieres que te avisemos cuando llegue? ¡Suscribete!</p>
+      <div class="envio-container">
+        <p class="envio"><strong>Envío:</strong> ¡Gratis!</p>
+        <p class="envio"><strong>Devolución Gratis:</strong> Hasta 8 de Febrero</p>
+      </div>
+      <p class="garantia"><strong>Garantía:</strong> 3 años</p>
+    </div>
+
+    <div class="fidely-online">
+      <span class="punto-verde">●</span> Pídelo online
+    </div>
+
+    <ul id="caracteristicas" class="caracteristicas-lista"></ul>
+    <button class="comprar">¡COMPRAR AHORA!</button>
+  </aside>
+</main>
+
+<script>
+  // Miniaturas → cambiar imagen principal
+  const miniaturas = document.querySelectorAll('.miniatura');
+  const imagenPrincipal = document.getElementById('imagenPrincipal');
+
+  miniaturas.forEach(mini => {
+    mini.addEventListener('click', () => {
+      imagenPrincipal.src = mini.src;
+      miniaturas.forEach(m => m.classList.remove('activa'));
+      mini.classList.add('activa');
+    });
+  });
+
+  // Cargar el único producto desde xiaomi.json
+  fetch('./data/xiaomi.json')
+    .then(res => res.json())
+    .then(producto => {
+      // Mostrar nombre
+      document.getElementById('nombre').textContent = producto.nombre;
+
+      // Mostrar valoración y opiniones
+      const estrellas = '★'.repeat(Math.round(producto.valoracion)) + '☆'.repeat(5 - Math.round(producto.valoracion));
+      document.getElementById('estrellas').textContent = estrellas;
+      document.getElementById('puntuacion').textContent = producto.valoracion.toFixed(1);
+      document.getElementById('opiniones').textContent = `${producto.opiniones} (${producto.opiniones} opiniones)`;
+
+      // Mostrar precio, precio original y descuento
+      document.getElementById('precio').textContent = producto.precio.toFixed(2) + '€';
+      document.getElementById('precioOriginal').textContent = producto.precioOriginal.toFixed(2) + '€';
+      document.getElementById('descuento').textContent = `-${producto.descuento}%`;
+
+      // Mostrar características
+      const lista = document.getElementById('caracteristicas');
+      lista.innerHTML = `
+        <li>CPU: ${producto.caracteristicas.cpu}</li>
+        <li>RAM: ${producto.caracteristicas.ram}</li>
+        <li>Disco: ${producto.caracteristicas.disco}</li>
+      `;
+
+      // Cambiar imagen principal si quieres que venga del JSON
+      if (producto.imagen) {
+        imagenPrincipal.src = producto.imagen;
+      }
+    })
+    .catch(err => {
+      console.error('Error cargando xiaomi.json:', err);
+    });
+</script>

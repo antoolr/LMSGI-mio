@@ -1,0 +1,17 @@
+
+  
+  {
+    "id": 1,
+    "nombre": "Xiaomi Redmi Note 13 Pro 5G 12GB/512GB Azul",
+    "precio": 299.99,
+    "precioOriginal": 333.00,
+    "descuento": 10,
+    "valoracion": 4.5,
+    "opiniones": 120,
+    "caracteristicas": {
+      "cpu": "MediaTek Helio G99 Ultra",
+      "ram": "8 GB",
+      "disco": "256 GB"
+    }
+  }
+
