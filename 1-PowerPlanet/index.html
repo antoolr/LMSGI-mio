@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerPlanet</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
@@ -174,10 +174,10 @@
                     <p class="precio">${producto.precio}€</p>
                 `;
 
-                // ✅ NUEVO: guardo el id del producto en el atributo data-id
+                // guardo el id del producto en el atributo data-id
                 tarjeta.dataset.id = producto.id;
 
-                // ✅ NUEVO: añado evento para que al hacer clic en la tarjeta, redirija a producto.html
+                //añado evento para que al hacer clic en la tarjeta, redirija a producto.html
                 tarjeta.addEventListener('click', () => {
                     // redirige a la página de detalle con el id como parámetro
                     window.location.href = `producto.html?id=${producto.id}`;
@@ -185,6 +185,12 @@
 
                 // añado la tarjeta al contenedor principal
                 contSeccion.appendChild(tarjeta);
+                
+                // añadimos un enlace a cada producto a su detalle
+                tarjeta.addEventListener('click', () => {
+                    window.location.href = `detalleJS.html?id=${producto.id}`;
+                });
+
             });
         });
 </script>
