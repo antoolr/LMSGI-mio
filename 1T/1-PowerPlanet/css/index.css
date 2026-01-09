@@ -96,7 +96,7 @@ main section article:hover{
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1) ;
     /* efecto sobre */
     transform: translateY(-3px);
-    background-color: antiquewhite;
+    background-color: rgb(234, 136, 7);
 }
 
 main section article .envio{
