@@ -1,3 +1,35 @@
+main {
+    flex-direction: row;
+    gap: 20px;
+}
+
+aside:first-of-type {
+    flex: 0 0 30%;
+    order: 1;
+}
+
+section {
+    flex: 1;
+    order: 2;
+}
+
+.info {
+    display: none;
+}
+
+nav ul {
+    gap: 20px;
+}
+
+nav a {
+    font-size: 14px;
+}
+
 header h1 {
-    color: green;
+    font-size: 24px;
+}
+
+footer {
+    flex-direction: row;
+    justify-content: space-around;
 }

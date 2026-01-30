@@ -1,0 +1,190 @@
+/* TABLET - A partir de 768px */
+
+header {
+    background: linear-gradient(135deg, #e8d5f2 0%, #f0e6f6 100%);
+    grid-template-areas:
+        "contacto-top contacto-top contacto-top"
+        "sociales . header-top"
+        "logo titulos contacto-main"
+        "nav nav nav";
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.header-top {
+    grid-area: header-top;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.header-top nav.sociales {
+    display: flex;
+    gap: 12px;
+    order: 2;
+}
+
+.header-top nav.sociales a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.header-top nav.sociales a:hover {
+    color: #5b4b8a;
+}
+
+.contacto-top {
+    grid-area: contacto-top;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 11px;
+    border-bottom: 1px solid #d4c5e8;
+}
+
+.contacto-top .telefono {
+    color: #666;
+}
+
+.contacto-top .login-top {
+    text-decoration: none;
+    color: #5b4b8a;
+    padding: 3px 8px;
+    border: 1px solid #5b4b8a;
+    border-radius: 3px;
+    font-size: 10px;
+    transition: all 0.3s;
+}
+
+.contacto-top .login-top:hover {
+    background-color: #5b4b8a;
+    color: white;
+}
+
+.header-top nav.login {
+    display: none;
+}
+
+.header-main {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-main img {
+    width: 60px;
+    height: 60px;
+    background-color: #f4c430;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.titulos {
+    grid-area: titulos;
+    text-align: left;
+    padding: 5px 0;
+}
+
+.titulos h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.titulos p {
+    font-size: 11px;
+    color: #999;
+    margin: 2px 0 0 0;
+}
+
+.menu-toggle {
+    grid-area: contacto-main;
+    justify-self: end;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    color: #666;
+}
+
+.contacto-main {
+    grid-area: contacto-main;
+    background-color: #d4c5e8;
+    padding: 8px 10px;
+    border-radius: 3px;
+    text-align: right;
+    font-size: 10px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.titulos h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.titulos p {
+    font-size: 11px;
+    color: #999;
+    margin: 2px 0 0 0;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.contacto-main {
+    display: none;
+}
+
+nav.menu-principal {
+    grid-area: nav;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 2px solid #5b4b8a;
+    border-bottom: 2px solid #5b4b8a;
+    background-color: white;
+}
+
+nav.menu-principal a {
+    padding: 15px;
+    text-decoration: none;
+    color: #5b4b8a;
+    border-right: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+nav.menu-principal a:last-child {
+    border-right: none;
+}
+
+nav.menu-principal a:hover {
+    background-color: #f8f6ff;
+}
+
+.dropdown {
+    display: none;
+}
